@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'haml'
+gem "cocoon"
 gem 'paperclip'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
