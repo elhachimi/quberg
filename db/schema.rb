@@ -11,11 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150101195210) do
+ActiveRecord::Schema.define(version: 20150101233354) do
 
   create_table "categories", force: true do |t|
     t.string   "title"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_lines", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.decimal  "unit_price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.string   "order_number"
+    t.integer  "costumer_id"
+    t.decimal  "total"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -28,6 +44,10 @@ ActiveRecord::Schema.define(version: 20150101195210) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "category_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "products", ["sku"], name: "index_products_on_sku", unique: true

@@ -1,0 +1,5 @@
+= form_for @order do |f|
+  .form-group
+    = f.label :order_number
+    = f.text_field :order_number, class: "form-control" 
+  =f.submit "Save", class: "btn btn-success"

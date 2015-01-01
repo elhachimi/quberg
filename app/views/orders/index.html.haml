@@ -1,0 +1,17 @@
+%h1 Sales
+.row
+  .col-md-3
+    = link_to  "Add", new_order_path, class: "btn btn-success"
+
+%table.table
+  %thead
+    %tr
+      %th Order Number
+      %th Date
+      %th Customer
+      %th Ammount
+      %th Status
+      %th
+      %th
+  %tbody
+    = render @orders
