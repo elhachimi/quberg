@@ -1,6 +1,13 @@
 .row
   .col-md-3
     = link_to  "Add a product", new_product_path, class: "btn btn-success"
+    = link_to "Add a category", new_category_path, class: "btn btn-default"
+  .col-md-3
+    = form_tag products_path, method: :get, class: "select-category" do
+      .form-group
+        = select_tag 'category_id', options_for_select(@categories), class: "form-control"
+      = submit_tag "filter"
+
 %table.table
   %thead
     %tr
@@ -8,7 +15,9 @@
       %th Name
       %th Price
       %th Quantity
+      %th Category
       %th
       %th
   %tbody
-    = render @products 
+    - if @products
+      = render @products 

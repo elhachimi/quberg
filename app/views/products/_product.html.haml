@@ -3,5 +3,6 @@
   %td= product.name
   %td= product.price
   %td= product.quantity
+  %td= product.category.title
   %td= link_to '', edit_product_path(product), class: "glyphicon glyphicon-pencil"
   %td= link_to '', product_path(product), class: "glyphicon glyphicon-remove", method: :delete

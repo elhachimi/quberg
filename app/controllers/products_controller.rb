@@ -1,10 +1,18 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @categories = categories << ["All", 0]
+    if params[:category_id] && params[:category_id] != "0"
+      @products = Product.find_by(category_id: params[:category_id])
+    else
+      @products = Product.all
+    end
+    
+    
   end
 
   def new
     @product = Product.new
+    @categories = categories
   end
 
   def create
@@ -12,15 +20,18 @@ class ProductsController < ApplicationController
     if product.save
       flash[:success] = "Product saved"
       redirect_to root_path
+    else
+        flash[:danger] = "tere was an error saving the product"
+        redirect_to :back
     end
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = product
+    @categories = categories
   end
 
   def update
-    product = Product.find(params[:id])
     if product.update(product_params)
       flash[:success] = "Product updated successfully"
       redirect_to root_path
@@ -28,7 +39,6 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:id])
     if product.destroy
       flash[:success] = "Product deleted successfully"
       redirect_to root_path
@@ -38,7 +48,16 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:sku, :name, :price, :quantity)
+    params.require(:product).permit(:sku, :name, :price, :quantity, :category_id)
+  end
+
+  def product
+    @_product ||= Product.find(params[:id])
+    
+  end
+
+  def categories
+    @_categories ||= Category.all.collect {|p| [ p.title, p.id ] }
   end
   
 end
