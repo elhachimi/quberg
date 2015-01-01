@@ -1,0 +1,14 @@
+.row
+  .col-md-3
+    = link_to  "Add a product", new_product_path, class: "btn btn-success"
+%table.table
+  %thead
+    %tr
+      %th SKU
+      %th Name
+      %th Price
+      %th Quantity
+      %th
+      %th
+  %tbody
+    = render @products 

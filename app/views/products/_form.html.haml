@@ -1,0 +1,16 @@
+= form_for @product do |f|
+  .form-group
+    = f.label :sku
+    = f.text_field :sku, class: "form-control"
+  .form-group
+    =f.select :category, Category.all, prompt: "Select a Category", class: "form-control"
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control"
+  .form-group
+    = f.label :price
+    = f.number_field :price, class: "form-control"
+  .form-group
+    = f.label :quantity
+    = f.number_field :quantity, class: "form-control"
+  = f.submit "Save", class: "btn"
