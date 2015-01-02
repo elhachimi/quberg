@@ -1,5 +1,8 @@
 = form_for @order do |f|
-  .form-group
-    = f.label :order_number
-    = f.text_field :order_number, class: "form-control" 
+  %h3 Order lines
+  #order_lines
+    = f.fields_for :order_lines do |order_line|
+      = render 'order_line_fields', :f => order_line
+    .links
+      = link_to_add_association 'Add order line', f, :order_lines, class: "glyphicon glyphicon-plus"
   =f.submit "Save", class: "btn btn-success"

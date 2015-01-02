@@ -1,0 +1,14 @@
+.nested-fields
+  .row
+    .form-group.col-md-3
+      =f.label :product_id
+      =f.select :product_id, @products, {prompt: "Select a product"}, {class: "form-control"}
+    .form-group.col-md-3
+      =f.label :unit_price
+      =f.number_field :unit_price, class: "form-control"
+    .form-group.col-md-3
+      = f.label :quantity
+      = f.text_field :quantity, class: "form-control"
+  .row
+    .col-md-12
+      = link_to_remove_association "remove order line", f, class: "glyphicon glyphicon-minus"

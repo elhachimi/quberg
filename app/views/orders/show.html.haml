@@ -1,0 +1,12 @@
+%h1= @order.order_number
+%h3 Order lines
+%table.table
+  %thead
+    %tr
+      %th Product
+      %th Description
+      %th Quantity
+      %th Unit price
+      %th Sub Total
+  %tbody
+    = render @order.order_lines
